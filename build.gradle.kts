@@ -22,23 +22,28 @@ repositories {
 	mavenCentral()
 }
 
+val jwtVersion by extra("0.11.2")
+
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
-	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc:2.6.5")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.5")
+	implementation("org.springframework.boot:spring-boot-starter-jdbc:2.6.5")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client:2.6.5")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server:2.6.5")
+	implementation("org.springframework.boot:spring-boot-starter-security:2.6.5")
+	implementation("org.springframework.boot:spring-boot-starter-web:2.6.5")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.liquibase:liquibase-core")
-	compileOnly("org.projectlombok:lombok")
-	runtimeOnly("org.postgresql:postgresql")
-	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
+	implementation("org.liquibase:liquibase-core:4.9.0")
+	compileOnly("org.projectlombok:lombok:1.18.22")
+	runtimeOnly("org.postgresql:postgresql:42.3.3")
+	annotationProcessor("org.projectlombok:lombok:1.18.22")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.5")
+	testImplementation("org.springframework.security:spring-security-test:5.6.2")
+	implementation("io.jsonwebtoken", "jjwt-api", jwtVersion)
+	runtimeOnly("io.jsonwebtoken", "jjwt-impl", jwtVersion)
+	runtimeOnly("io.jsonwebtoken", "jjwt-jackson", jwtVersion)
 }
 
 tasks.withType<KotlinCompile> {

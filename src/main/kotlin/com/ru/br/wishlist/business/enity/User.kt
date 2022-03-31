@@ -1,9 +1,11 @@
-package com.ru.br.wishlist.enity
+package com.ru.br.wishlist.business.enity
 
+import lombok.Data
 import java.util.*
 import javax.persistence.*
 
 @Entity
+@Data
 @Table(name = "user")
 data class User(
 

@@ -1,4 +1,4 @@
-package com.ru.br.wishlist.security.provider
+package com.ru.br.wishlist.preferences.security.provider
 
 interface JwtProvider {
 

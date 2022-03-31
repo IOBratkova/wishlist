@@ -23,7 +23,6 @@
             <column name="email" type="varchar(30)"/>
             <column name="created" type="datetime" />
             <column name="updated" type="datetime" />
-            <column name="user_id" type="bigint" />
         </createTable>
 
         <createSequence
