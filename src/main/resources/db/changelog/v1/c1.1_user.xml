@@ -1,0 +1,57 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <property name="blob_type" value="bytea" dbms="postgresql"/>
+
+    <changeSet id="31032022-1059" author="bratckova">
+
+        <createSequence
+                sequenceName="credentials_seq"
+                incrementBy="1"
+                minValue="1"
+                dataType="bigint"
+                startValue="1"/>
+
+        <createTable tableName="user_credentials">
+            <column name="id" type="bigint" defaultValueComputed="nextval('credentials_seq')">
+                <constraints primaryKey="true" foreignKeyName="user_credentials_fk"/>
+            </column>
+            <column name="username" type="varchar(30)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="email" type="varchar(30)"/>
+            <column name="role" type="varchar(10)"/>
+            <column name="created" type="datetime" />
+            <column name="updated" type="datetime" />
+        </createTable>
+
+        <createSequence
+                sequenceName="info_seq"
+                incrementBy="1"
+                minValue="1"
+                dataType="bigint"
+                startValue="1"/>
+
+        <createTable tableName="user_info">
+            <column name="id" type="bigint" defaultValueComputed="nextval('info_seq')">
+                <constraints primaryKey="true" foreignKeyName="user_fk"/>
+            </column>
+            <column name="first_name" type="varchar(30)"/>
+            <column name="second_name" type="varchar(30)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="created" type="datetime" />
+            <column name="updated" type="datetime" />
+            <column name="user_credentials_id" type="bigint" />
+        </createTable>
+
+
+        <addForeignKeyConstraint baseColumnNames="user_credentials_id"
+                                 baseTableName="user_info"
+                                 constraintName="info2credentials_fk"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_credentials"/>
+
+    </changeSet>
+
+</databaseChangeLog>

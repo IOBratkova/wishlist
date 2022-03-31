@@ -1,0 +1,25 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <property name="blob_type" value="bytea" dbms="postgresql"/>
+
+    <changeSet id="31072021-1313" author="bratckova">
+        <createSequence
+                sequenceName="handmade_tag_seq"
+                incrementBy="1"
+                minValue="1"
+                dataType="bigint"
+                startValue="1"/>
+
+        <createTable tableName="handmade_tag">
+            <column name="id" type="bigint" defaultValueComputed="nextval('handmade_tag_seq')">
+                <constraints primaryKey="true" foreignKeyName="handmade_tag_fk"/>
+            </column>
+            <column name="title" type="varchar(30)" />
+            <column name="description" type="text" />
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
