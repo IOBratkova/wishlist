@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+
+  pg_db:
+    image: "postgres:11"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: lucis
+      POSTGRES_USER: fur
+      POSTGRES_DB: wishlist
+    ports:
+      - 54321:5432
+    volumes:
+      - pg_wishlist:/var/lib/postgresql/data
+
+  pg_db_test:
+    image: "postgres:11"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: lucis
+      POSTGRES_USER: fur
+      POSTGRES_DB: wishlist_test
+    ports:
+      - 54322:5432
+    volumes:
+      - pg_wishlist_test:/var/lib/postgresql/data
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+volumes:
+  pg_wishlist:
+  pg_wishlist_test:
