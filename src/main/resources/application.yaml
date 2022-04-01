@@ -17,3 +17,4 @@ spring:
 
 jwt:
   expiration: 604800000
+  secret: "secretSecretWishListSecretMySecretReallySekret123"

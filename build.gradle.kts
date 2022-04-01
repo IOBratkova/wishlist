@@ -1,11 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+	val kotlinVersion = "1.6.10"
 	id("org.springframework.boot") version "2.6.5"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.10"
 	kotlin("plugin.spring") version "1.6.10"
 	kotlin("plugin.jpa") version "1.6.10"
+	kotlin("kapt") version kotlinVersion
 }
 
 group = "com.ru.br"
@@ -22,6 +24,8 @@ repositories {
 	mavenCentral()
 }
 
+
+val mapStructVersion by extra("1.4.2.Final")
 val jwtVersion by extra("0.11.2")
 
 dependencies {
@@ -36,6 +40,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.liquibase:liquibase-core:4.9.0")
+	implementation("javax.validation:validation-api:2.0.1.Final")
 	compileOnly("org.projectlombok:lombok:1.18.22")
 	runtimeOnly("org.postgresql:postgresql:42.3.3")
 	annotationProcessor("org.projectlombok:lombok:1.18.22")
@@ -44,6 +49,8 @@ dependencies {
 	implementation("io.jsonwebtoken", "jjwt-api", jwtVersion)
 	runtimeOnly("io.jsonwebtoken", "jjwt-impl", jwtVersion)
 	runtimeOnly("io.jsonwebtoken", "jjwt-jackson", jwtVersion)
+	api("org.mapstruct", "mapstruct", mapStructVersion)
+	kapt("org.mapstruct", "mapstruct-processor", mapStructVersion)
 }
 
 tasks.withType<KotlinCompile> {

@@ -16,7 +16,7 @@ class JwtProviderImpl @Autowired constructor(
     private val env: Environment
 ) : JwtProvider {
 
-    private val secretKey: String = "furfur"
+    private val secretKey: String = getSecretKey()
     private val algorithm: SignatureAlgorithm = SignatureAlgorithm.HS256
     private val apiKey: ByteArray = DatatypeConverter.parseBase64Binary(secretKey)
     private val key: Key = SecretKeySpec(apiKey, algorithm.jcaName)
@@ -53,7 +53,11 @@ class JwtProviderImpl @Autowired constructor(
         return claims.subject
     }
 
-    fun getJwtTokenLive() : Int {
+    private fun getJwtTokenLive() : Int {
         return (env.getProperty("jwt.expiration"))?.toInt()!!
+    }
+
+    private fun getSecretKey() : String {
+        return (env.getProperty("jwt.secret"))!!
     }
 }

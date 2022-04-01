@@ -21,6 +21,7 @@
             <column name="username" type="varchar(30)"/>
             <column name="password" type="varchar(255)"/>
             <column name="email" type="varchar(30)"/>
+            <column name="role" type="varchar(10)"/>
             <column name="created" type="datetime" />
             <column name="updated" type="datetime" />
         </createTable>

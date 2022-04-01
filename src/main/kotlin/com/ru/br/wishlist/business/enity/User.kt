@@ -1,11 +1,19 @@
 package com.ru.br.wishlist.business.enity
 
+import lombok.AllArgsConstructor
 import lombok.Data
+import lombok.NoArgsConstructor
+import lombok.RequiredArgsConstructor
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.util.*
 import javax.persistence.*
 
 @Entity
 @Data
+@RequiredArgsConstructor
+@NoArgsConstructor
 @Table(name = "user")
 data class User(
 
@@ -28,13 +36,13 @@ data class User(
     val firstName: String? = "UNKNOWN",
 
     @Column(name = "second_name")
-    val secondName: String?,
+    val secondName: String? = "",
 
     @Column(name = "patronymic")
-    val patronymic: String?,
+    val patronymic: String? = "",
 
     @Column(name = "description")
-    val description: String?,
+    val description: String? = "",
 
     @Column(name = "avatar")
     var avatar: String? = null

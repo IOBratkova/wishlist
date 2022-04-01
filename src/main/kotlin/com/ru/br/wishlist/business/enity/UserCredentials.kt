@@ -1,11 +1,16 @@
 package com.ru.br.wishlist.business.enity
 
+import lombok.AllArgsConstructor
 import lombok.Data
+import lombok.NoArgsConstructor
+import lombok.RequiredArgsConstructor
 import java.util.*
 import javax.persistence.*
 
 @Entity
 @Data
+@RequiredArgsConstructor
+@NoArgsConstructor
 @Table(name = "user_credentials")
 data class UserCredentials (
 
@@ -27,6 +32,9 @@ data class UserCredentials (
     var password: String,
 
     @Column(name = "email", nullable = false)
-    var email: String
+    var email: String,
+
+    @Column(name = "role", nullable = false)
+    var role: String
 
 )
