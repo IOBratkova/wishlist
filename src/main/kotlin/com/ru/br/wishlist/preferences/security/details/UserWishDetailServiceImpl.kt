@@ -1,7 +1,6 @@
 package com.ru.br.wishlist.preferences.security.details
 
 import com.ru.br.wishlist.business.service.user.UserCredentialsService
-import com.ru.br.wishlist.business.service.user.UserService
 import com.ru.br.wishlist.preferences.security.principal.UserPrincipal
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails

@@ -1,6 +1,5 @@
 package com.ru.br.wishlist.business.service.auth
 
-import com.ru.br.wishlist.business.enity.User
 import com.ru.br.wishlist.business.enity.UserCredentials
 import com.ru.br.wishlist.business.service.user.UserCredentialsService
 import com.ru.br.wishlist.preferences.security.provider.JwtProvider

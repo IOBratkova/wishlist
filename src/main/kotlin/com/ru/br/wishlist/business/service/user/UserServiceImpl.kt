@@ -1,8 +1,6 @@
 package com.ru.br.wishlist.business.service.user
 
 import com.ru.br.wishlist.business.enity.User
-import com.ru.br.wishlist.business.enity.UserCredentials
-import com.ru.br.wishlist.business.repos.UserCredentialsRepo
 import com.ru.br.wishlist.business.repos.UserRepo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
