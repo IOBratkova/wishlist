@@ -33,7 +33,7 @@
                 dataType="bigint"
                 startValue="1"/>
 
-        <createTable tableName="user">
+        <createTable tableName="user_info">
             <column name="id" type="bigint" defaultValueComputed="nextval('info_seq')">
                 <constraints primaryKey="true" foreignKeyName="user_fk"/>
             </column>
@@ -49,7 +49,7 @@
 
 
         <addForeignKeyConstraint baseColumnNames="user_credentials_id"
-                                 baseTableName="user"
+                                 baseTableName="user_info"
                                  constraintName="info2credentials_fk"
                                  referencedColumnNames="id"
                                  referencedTableName="user_credentials"/>

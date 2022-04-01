@@ -18,6 +18,13 @@ class UserServiceImpl @Autowired constructor(
             }
     }
 
+    //TODO: Exception
+    override fun findByUserCredentialId(id: Long): User {
+        return userRepo.findByUserCredentialsId(id).orElseThrow {
+            NullPointerException(id.toString())
+        }
+    }
+
     override fun save(user: User): User {
         return userRepo.saveAndFlush(user)
     }

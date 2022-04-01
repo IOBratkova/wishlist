@@ -1,8 +1,9 @@
 package com.ru.br.wishlist.business.service.auth
 
+import com.ru.br.wishlist.business.enity.User
 import com.ru.br.wishlist.business.enity.UserCredentials
 import com.ru.br.wishlist.business.service.user.UserCredentialsService
-import com.ru.br.wishlist.preferences.security.provider.JwtProvider
+import com.ru.br.wishlist.business.service.user.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service
 @Service
 class AuthRegServiceImpl @Autowired constructor(
     private val userCredentialsService: UserCredentialsService,
-    private val jwtProvider: JwtProvider,
+    private val userService: UserService,
     private val passwordEncoder: PasswordEncoder
 ) : AuthRegService {
 
@@ -23,7 +24,9 @@ class AuthRegServiceImpl @Autowired constructor(
             throw NullPointerException(userCredentials.username)
         }
         userCredentials.password = passwordEncoder.encode(userCredentials.password)
-        return userCredentialsService.save(userCredentials).id!!
+        val user = User(null, null, null, userCredentials, "UNKNOWN", "", "", "", null)
+        userCredentialsService.save(userCredentials).id!!
+        return userService.save(user).id!!
     }
 
     //TODO: Exception

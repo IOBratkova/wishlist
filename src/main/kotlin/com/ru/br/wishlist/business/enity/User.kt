@@ -10,7 +10,7 @@ import javax.persistence.*
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "user_info")
 data class User(
 
     @Id
