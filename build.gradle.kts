@@ -25,7 +25,7 @@ repositories {
 }
 
 
-val mapStructVersion by extra("1.4.2.Final")
+val mapStructVersion by extra("1.5.5.Final")
 val jwtVersion by extra("0.11.2")
 
 dependencies {

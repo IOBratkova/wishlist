@@ -16,7 +16,7 @@ class RegServiceImpl @Autowired constructor(
     private val passwordEncoder: PasswordEncoder
 ) : RegService {
 
-    override fun registration(userCredentials: UserCredentials): Long {
+    override fun  registration(userCredentials: UserCredentials): Long {
         if (userCredentialsService.existByUsername(userCredentials.username)) {
             throw RegistrationException(userCredentials.username)
         }
@@ -25,8 +25,8 @@ class RegServiceImpl @Autowired constructor(
         }
         userCredentials.password = passwordEncoder.encode(userCredentials.password)
         val user = User(null, null, null, userCredentials, "UNKNOWN", "", "")
-        userCredentialsService.save(userCredentials).id!!
-        return userService.save(user).id!!
+        userCredentialsService.save(userCredentials).id
+        return userService.save(user)!! // TODO: 12.09.2023 уйти от !!
     }
 
 }

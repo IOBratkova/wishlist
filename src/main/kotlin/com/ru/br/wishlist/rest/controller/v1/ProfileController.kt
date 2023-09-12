@@ -1,9 +1,8 @@
 package com.ru.br.wishlist.rest.controller.v1
 
-import com.ru.br.wishlist.business.service.auth.RegService
+import com.ru.br.wishlist.business.service.profile.ProfileService
 import com.ru.br.wishlist.rest.dto.IdDto
-import com.ru.br.wishlist.rest.dto.RegistrationReqDto
-import com.ru.br.wishlist.rest.mapper.UserMapper
+import com.ru.br.wishlist.rest.dto.UserDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,16 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("v1/registration")
-class RegController @Autowired constructor(
-    private val regService: RegService,
-    private val userCredMapper: UserMapper
+@RequestMapping("v1/profile")
+class ProfileController @Autowired constructor(
+    private val profileService: ProfileService
 ) {
+
     @PostMapping("")
-    fun registration(@RequestBody request: RegistrationReqDto) : ResponseEntity<IdDto> {
-        val userCredentials = userCredMapper.toUserCredentials(request)
+    fun registration(@RequestBody request: UserDto) : ResponseEntity<IdDto> {
         return ResponseEntity<IdDto>(
-            IdDto(regService.registration(userCredentials)), HttpStatus.OK
+            IdDto(profileService.update(request)), HttpStatus.OK
         )
     }
 }
