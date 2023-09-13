@@ -3,6 +3,7 @@ package com.ru.br.wishlist.business.service.user
 import com.ru.br.wishlist.business.enity.UserCredentials
 import com.ru.br.wishlist.business.repos.UserCredentialsRepo
 import com.ru.br.wishlist.exceptions.user.UserNotFoundException
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

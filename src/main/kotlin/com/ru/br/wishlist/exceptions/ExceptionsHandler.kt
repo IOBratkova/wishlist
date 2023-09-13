@@ -1,5 +1,7 @@
 package com.ru.br.wishlist.exceptions
 
+import com.ru.br.wishlist.exceptions.reg.RegistrationException
+import com.ru.br.wishlist.exceptions.user.UserNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -13,13 +15,8 @@ class ExceptionsHandler : ResponseEntityExceptionHandler() {
     data class ExceptionModel(val message: String, val exceptionTime: Date)
 
     @ExceptionHandler(value = [
-//        EmailRegistrationException::class,
-//        UsernameRegistrationException::class,
-//        IncorrectCredentialsException::class,
-//        EmailException::class, UserAuthException::class,
-//        UsernameException::class,
-//        ValidatePasswordException::class,
-//        CompleteRegistrationException::class
+        UserNotFoundException::class,
+        RegistrationException::class
     ])
     fun handleException(e: Exception) : ResponseEntity<ExceptionModel> {
         val ex = ExceptionModel(e.message!!, Date())

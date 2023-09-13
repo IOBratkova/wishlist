@@ -45,7 +45,7 @@ class UserPrincipal (
             return UserPrincipal(
                 user.username,
                 user.password,
-                mutableListOf(SimpleGrantedAuthority(null)),
+                mutableListOf(SimpleGrantedAuthority("ROLE_" + user.role)),
                 user.id!!
             )
         }
